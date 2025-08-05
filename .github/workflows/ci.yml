@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Lint markdown files
+      run: npm run lint
+    
+    - name: Validate links
+      run: npm run validate-links
+    
+    - name: Check for broken links
+      run: |
+        find . -name "*.md" -exec grep -l "http" {} \; | xargs -I {} sh -c 'echo "Checking {}"; grep -o "http[^ ]*" {} | while read url; do curl -s -o /dev/null -w "%{http_code}" "$url" | grep -q "200\|301\|302" || echo "Broken link: $url in {}"; done'
+    
+    - name: Validate file structure
+      run: |
+        # Check if all numbered documentation files exist
+        for i in {01..14}; do
+          if [ ! -f "${i}-*.md" ]; then
+            echo "Warning: Documentation file ${i}-*.md not found"
+          fi
+        done
+        
+        # Check templates directory
+        if [ ! -d "templates" ]; then
+          echo "Error: templates directory missing"
+          exit 1
+        fi
+        
+        # Check README exists
+        if [ ! -f "README.md" ]; then
+          echo "Error: README.md missing"
+          exit 1
+        fi
+
+  security:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Check for secrets
+      run: |
+        # Basic secret scanning
+        if grep -r "sk-[a-zA-Z0-9]{48}" . --exclude-dir=.git; then
+          echo "Warning: Potential OpenAI API keys found"
+        fi
+    
+    - name: Check for API keys
+      run: |
+        if grep -r "api_key\|api_secret\|password\|token" . --exclude-dir=.git --exclude=*.md; then
+          echo "Warning: Potential secrets found in files"
+        fi 

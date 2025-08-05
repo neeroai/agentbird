@@ -1,0 +1,39 @@
+{
+  "name": "agentbird",
+  "version": "1.0.0",
+  "description": "Comprehensive documentation for Bird.com AI Employees configuration and management",
+  "main": "README.md",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0",
+    "lint": "markdownlint **/*.md",
+    "validate-links": "markdown-link-check **/*.md",
+    "build": "echo \"Documentation build completed\"",
+    "serve": "echo \"Documentation server started\""
+  },
+  "keywords": [
+    "bird.com",
+    "ai-employees",
+    "documentation",
+    "configuration",
+    "koaj",
+    "chatbot",
+    "ai"
+  ],
+  "author": "KOAJ Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/koaj/agentbird.git"
+  },
+  "bugs": {
+    "url": "https://github.com/koaj/agentbird/issues"
+  },
+  "homepage": "https://github.com/koaj/agentbird#readme",
+  "devDependencies": {
+    "markdownlint-cli": "^0.37.0",
+    "markdown-link-check": "^3.12.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+} 
