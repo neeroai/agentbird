@@ -6,19 +6,31 @@ RobertAI es un repositorio integral de documentación y análisis para la implem
 
 ## 🚀 Inicio Rápido
 
-### Para Nuevas Implementaciones
+### 📖 Para Nuevas Implementaciones (Conceptual)
 1. **Comienza con [Introducción](getting-started/introduction.md)** - Comprende los fundamentos
 2. **Revisa [Arquitectura](getting-started/architecture.md)** - Planifica tu arquitectura técnica
 3. **Sigue [Configuración Básica](getting-started/basic-setup.md)** - Configura tu primer Empleado de IA
 
-### Para Usuarios Avanzados
+### 👨‍💻 Para Desarrolladores (Técnico)
+1. **[API Reference](api-reference.md)** - 📚 **NUEVO** Documentación técnica completa con ejemplos de código
+2. **[Developer Quick Start](developer-quickstart.md)** - ⚡ Guía rápida para desarrolladores
+3. **[SDK Examples](api-reference.md#sdk-examples)** - Ejemplos prácticos en Python/JavaScript
+
+### 🔧 Para Usuarios Avanzados
 1. **Implementa [AI Actions](development/ai-actions.md)** - Agrega capacidades dinámicas
 2. **Diseña [Flujos Conversacionales](development/conversation-flows.md)** - Crea flujos de conversación
 3. **Integra [APIs Externas](development/api-integrations.md)** - Conecta sistemas externos
 
 ## 📚 Estructura de la Documentación
 
-### 🌱 Primeros Pasos
+### 👨‍💻 **API y Desarrollo (Para Desarrolladores)**
+- **[📚 API Reference](api-reference.md)** - **NUEVO** Documentación técnica completa de la API
+- **[⚡ Developer Quick Start](developer-quickstart.md)** - **NUEVO** Guía rápida para desarrolladores
+- **[🔧 Troubleshooting & Examples](troubleshooting-examples.md)** - **NUEVO** Solución de problemas y herramientas interactivas
+- **[🔗 Integraciones API](development/api-integrations.md)** - Patrones de integración con KOAJ API
+- **[🔔 Webhooks y Eventos](development/webhooks.md)** - Sistema de eventos en tiempo real
+
+### 🌱 Primeros Pasos (Conceptual)
 - **[Introducción](getting-started/introduction.md)** - Comprende qué son los AI Employees de Bird.com
 - **[Arquitectura](getting-started/architecture.md)** - Arquitectura técnica e integración
 - **[Configuración Básica](getting-started/basic-setup.md)** - Configuración inicial y primeros pasos
@@ -28,11 +40,9 @@ RobertAI es un repositorio integral de documentación y análisis para la implem
 - **[Personalidad y Comportamiento](configuration/personality.md)** - Diseño de personalidad del agente
 - **[Base de Conocimiento](configuration/knowledge-base.md)** - Configuración de la base de conocimiento
 
-### 🛠️ Desarrollo
+### 🛠️ Desarrollo Avanzado
 - **[AI Actions](development/ai-actions.md)** - Acciones de IA e integración de APIs
 - **[Flujos Conversacionales](development/conversation-flows.md)** - Diseño de flujos de conversación
-- **[Integraciones API](development/api-integrations.md)** - Integraciones con APIs externas
-- **[Webhooks y Eventos](development/webhooks.md)** - Configuración de webhooks y eventos
 
 ### 🎯 Operaciones
 - **[Testing y Validación](operations/testing.md)** - Estrategias de prueba y validación
@@ -167,9 +177,15 @@ Este repositorio se mantiene para reflejar las últimas características de la p
 - Recopila feedback del usuario regularmente
 - Mantén actualizaciones de la base de conocimiento
 
-## 📝 Referencia Completa
+## 📝 Referencias Completas
 
-Para una guía completa en un solo documento, consulta [COMPREHENSIVE-GUIDE.md](COMPREHENSIVE-GUIDE.md) que sintetiza toda la información de implementación.
+### 📚 **Para Desarrolladores**
+- **[API Reference](api-reference.md)** - Documentación técnica completa con ejemplos de código en Python, JavaScript y curl
+- **[Developer Quick Start](developer-quickstart.md)** - Guía rápida de 5 minutos para comenzar con la API
+- **[Troubleshooting & Examples](troubleshooting-examples.md)** - Herramientas de diagnóstico y solución de problemas comunes
+
+### 📖 **Para Implementación Conceptual**  
+- **[COMPREHENSIVE-GUIDE.md](COMPREHENSIVE-GUIDE.md)** - Guía completa en un solo documento que sintetiza toda la información de implementación
 
 ---
 
