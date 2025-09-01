@@ -120,12 +120,13 @@ tools: [list of available tools]
 
 ### Shared Resource System
 ```
-agents/_shared/
-├── templates/     # YAML document templates (13 files)
-├── tasks/        # Executable workflows (17 files)
-├── checklists/   # Validation checklists (7 files)
-├── data/         # Knowledge base and preferences (4 files)
-└── workflows/    # Complete project workflows
+.bmad-core/
+├── templates/     # YAML document templates (5 files) - Documentation focused
+├── tasks/        # Executable workflows (10 files) - Generic processes  
+├── checklists/   # Validation checklists (3 files) - Quality assurance
+├── data/         # Knowledge base and techniques (3 files) - Methodology
+├── agent-teams/  # Team configurations (4 files) - Agent groupings
+└── utils/        # Utility resources (2 files) - Support tools
 ```
 
 ## 🚀 Getting Started
@@ -153,10 +154,12 @@ agents/_shared/
   "agents_found": 9,
   "tools_found": 6,
   "shared_resources": {
-    "templates": 13,
-    "tasks": 17, 
-    "checklists": 7,
-    "data": 4
+    "templates": 5,
+    "tasks": 10, 
+    "checklists": 3,
+    "data": 3,
+    "agent-teams": 4,
+    "utils": 2
   },
   "issues": 0
 }

@@ -1,7 +1,7 @@
 {
   "read_bmad_resource": {
     "name": "read_bmad_resource",
-    "description": "Read BMad shared resources (templates, tasks, checklists, data, workflows) from the agents/_shared directory. This tool provides access to the complete BMad methodology resource library. Use this when you need to access any BMad template, task definition, checklist, knowledge base content, or workflow specification. The tool accepts a resource_type (templates|tasks|checklists|data|workflows) and resource_name, then returns the complete resource content. For YAML templates, it also provides parsed structure for easy access.",
+    "description": "Read BMad shared resources (templates, tasks, checklists, data, workflows) from the .bmad-core directory. This tool provides access to the complete BMad methodology resource library. Use this when you need to access any BMad template, task definition, checklist, knowledge base content, or workflow specification. The tool accepts a resource_type (templates|tasks|checklists|data|workflows) and resource_name, then returns the complete resource content. For YAML templates, it also provides parsed structure for easy access.",
     "input_schema": {
       "type": "object",
       "properties": {
@@ -23,7 +23,7 @@
   
   "execute_bmad_task": {
     "name": "execute_bmad_task",
-    "description": "Execute a BMad methodology task from the _shared/tasks directory. This tool loads task definitions and provides the complete task workflow for execution. Tasks are the core executable workflows in the BMad methodology (create-doc, shard-doc, execute-checklist, etc.). Use this when an agent needs to execute a specific BMad task. The tool loads the task markdown file and provides complete instructions for execution following BMad methodology principles.",
+    "description": "Execute a BMad methodology task from the .bmad-core/tasks directory. This tool loads task definitions and provides the complete task workflow for execution. Tasks are the core executable workflows in the BMad methodology (create-doc, shard-doc, execute-checklist, etc.). Use this when an agent needs to execute a specific BMad task. The tool loads the task markdown file and provides complete instructions for execution following BMad methodology principles.",
     "input_schema": {
       "type": "object", 
       "properties": {

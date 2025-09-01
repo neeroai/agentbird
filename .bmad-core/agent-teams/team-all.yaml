@@ -3,12 +3,6 @@ bundle:
   icon: 👥
   description: Includes every core system agent.
 agents:
-  - bmad-orchestrator
+  - bmad-master
   - '*'
-workflows:
-  - brownfield-fullstack.yaml
-  - brownfield-service.yaml
-  - brownfield-ui.yaml
-  - greenfield-fullstack.yaml
-  - greenfield-service.yaml
-  - greenfield-ui.yaml
+workflows: null

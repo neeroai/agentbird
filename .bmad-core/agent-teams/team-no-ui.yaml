@@ -3,11 +3,9 @@ bundle:
   icon: 🔧
   description: Team with no UX or UI Planning.
 agents:
-  - bmad-orchestrator
+  - bmad-master
   - analyst
   - pm
   - architect
   - po
-workflows:
-  - greenfield-service.yaml
-  - brownfield-service.yaml
+workflows: null
