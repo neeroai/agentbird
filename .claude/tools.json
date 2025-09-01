@@ -1,0 +1,131 @@
+{
+  "read_bmad_resource": {
+    "name": "read_bmad_resource",
+    "description": "Read BMad shared resources (templates, tasks, checklists, data, workflows) from the agents/_shared directory. This tool provides access to the complete BMad methodology resource library. Use this when you need to access any BMad template, task definition, checklist, knowledge base content, or workflow specification. The tool accepts a resource_type (templates|tasks|checklists|data|workflows) and resource_name, then returns the complete resource content. For YAML templates, it also provides parsed structure for easy access.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "resource_type": {
+          "type": "string",
+          "enum": ["templates", "tasks", "checklists", "data", "workflows"],
+          "description": "The type of BMad resource to access"
+        },
+        "resource_name": {
+          "type": "string",
+          "description": "The name of the specific resource file (with or without extension)"
+        }
+      },
+      "required": ["resource_type", "resource_name"]
+    },
+    "command": "python3",
+    "args": [".claude/tools/read_bmad_resource.py", "{{resource_type}}", "{{resource_name}}"]
+  },
+  
+  "execute_bmad_task": {
+    "name": "execute_bmad_task",
+    "description": "Execute a BMad methodology task from the _shared/tasks directory. This tool loads task definitions and provides the complete task workflow for execution. Tasks are the core executable workflows in the BMad methodology (create-doc, shard-doc, execute-checklist, etc.). Use this when an agent needs to execute a specific BMad task. The tool loads the task markdown file and provides complete instructions for execution following BMad methodology principles.",
+    "input_schema": {
+      "type": "object", 
+      "properties": {
+        "task_name": {
+          "type": "string",
+          "description": "The name of the BMad task to execute (without .md extension)"
+        },
+        "task_args": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Optional arguments to pass to the task"
+        }
+      },
+      "required": ["task_name"]
+    },
+    "command": "python3",
+    "args": [".claude/tools/execute_bmad_task.py", "{{task_name}}", "{{#task_args}}{{.}}{{/task_args}}"]
+  },
+  
+  "create_document": {
+    "name": "create_document", 
+    "description": "Create documents using BMad YAML templates with interactive workflows. This tool loads BMad templates (PRD, architecture, story, etc.) and provides the template structure for document creation. Templates define sections, elicitation strategies, and validation rules. Use this when creating any BMad document type. The tool parses YAML templates and provides structured guidance for document creation following BMad methodology standards.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "template_name": {
+          "type": "string", 
+          "description": "The name of the BMad template to use (with or without .yaml extension)"
+        },
+        "output_file": {
+          "type": "string",
+          "description": "Optional output file path for the created document"
+        }
+      },
+      "required": ["template_name"]
+    },
+    "command": "python3",
+    "args": [".claude/tools/create_document.py", "{{template_name}}", "{{output_file}}"]
+  },
+  
+  "execute_checklist": {
+    "name": "execute_checklist",
+    "description": "Execute BMad validation checklists for quality assurance. This tool loads checklist markdown files and provides systematic validation workflows. Checklists are used throughout the BMad methodology to ensure quality and completeness (po-master-checklist, story-dod-checklist, etc.). Use this when validating documents, stories, or other artifacts against BMad quality standards. The tool parses checklist items and provides structured validation guidance.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "checklist_name": {
+          "type": "string",
+          "description": "The name of the BMad checklist to execute (with or without .md extension)"
+        },
+        "target_document": {
+          "type": "string", 
+          "description": "Optional path to the document being validated"
+        }
+      },
+      "required": ["checklist_name"]
+    },
+    "command": "python3",
+    "args": [".claude/tools/execute_checklist.py", "{{checklist_name}}", "{{target_document}}"]
+  },
+  
+  "shard_document": {
+    "name": "shard_document",
+    "description": "Shard large documents into manageable pieces for development consumption. This tool breaks large documents (PRDs, architecture docs) into smaller chunks optimized for agent context limits while maintaining logical coherence. Essential for the BMad development phase where large planning documents must be consumed by development agents. The tool finds natural section breaks, estimates token counts, and creates an index for navigation. Use this when preparing large documents for the development phase.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "input_file": {
+          "type": "string",
+          "description": "Path to the document file to be sharded"
+        },
+        "output_directory": {
+          "type": "string", 
+          "description": "Directory where sharded files will be created"
+        },
+        "max_tokens": {
+          "type": "number",
+          "description": "Maximum tokens per shard (default: 3000)",
+          "default": 3000
+        }
+      },
+      "required": ["input_file", "output_directory"]
+    },
+    "command": "python3",
+    "args": [".claude/tools/shard_document.py", "{{input_file}}", "{{output_directory}}", "{{max_tokens}}"]
+  },
+  
+  "toggle_kb_mode": {
+    "name": "toggle_kb_mode",
+    "description": "Toggle knowledge base mode to access BMad methodology documentation. This tool loads the complete BMad knowledge base (bmad-kb.md) for methodology consultation. Use this when agents need deep understanding of BMad principles, workflows, or methodology details. The knowledge base contains comprehensive documentation of the BMad methodology, including core concepts, workflows, and best practices. Essential for the BMad Master agent and when agents need methodology guidance.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["on", "off", "toggle"],
+          "description": "Knowledge base mode: 'on' to activate, 'off' to deactivate, 'toggle' to switch state",
+          "default": "toggle"
+        }
+      }
+    },
+    "command": "python3",
+    "args": [".claude/tools/toggle_kb_mode.py", "{{mode}}"]
+  }
+}

@@ -51,13 +51,13 @@
    - Navigate to Settings > AI > Knowledge Base
    - Click "Add New" or "Create Folder"
 
-2. **Create Folder Structure**
-   - Create main folders for organization
-   - Add subfolders as needed
-   - Use clear, descriptive names
+2. **Create Single Knowledge Base File**
+   - Create one comprehensive knowledge base file
+   - Organize content with clear sections
+   - Use consistent formatting and headers
 
 3. **Upload Content**
-   - Add .md files to appropriate folders
+   - Add content to the single knowledge base file
    - Ensure proper markdown formatting
    - Use clear H1, H2, H3 headers for better search
 

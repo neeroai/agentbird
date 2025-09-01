@@ -1,0 +1,149 @@
+# Bird.com AI Employees Repository - Cursor Rules
+
+## 🎯 Project Philosophy: KISS (Keep It Simple, Stupid)
+
+This repository follows the KISS methodology to maintain a compact, organized structure without unnecessary complexity.
+
+## 📁 File Structure Rules
+
+### ✅ ALLOWED Structure
+```
+agentbird/
+├── README.md                    # Main documentation index
+├── BIRD-SETUP-GUIDE.md         # Complete implementation guide
+├── 01-INTRODUCCION.md          # Introduction & concepts
+├── 02-ARQUITECTURA.md          # Architecture & integration
+├── 03-CONFIGURACION-BASICA.md  # Basic setup
+├── 04-CONFIGURACION-AVANZADA.md # Advanced configuration
+├── 05-PERSONALIDAD-Y-COMPORTAMIENTO.md # Personality setup
+├── 06-KNOWLEDGE-BASE.md        # Knowledge base management
+├── 07-AI-ACTIONS.md            # Actions & API integration
+├── 08-FLUJO-CONVERSACIONAL.md  # Conversational design
+├── 09-INTEGRACIONES-API.md     # External API integration
+├── 10-WEBHOOKS-Y-EVENTOS.md    # Webhooks & events
+├── 11-TESTING-Y-VALIDACION.md  # Testing & validation
+├── 12-MONITOREO-Y-ANALYTICS.md # Monitoring & analytics
+├── 13-SEGURIDAD-Y-COMPLIANCE.md # Security & compliance
+├── 14-TROUBLESHOOTING.md       # Problem solving
+├── templates/                   # Reusable templates (MAX 3 files)
+│   ├── manual-config-guide.md
+│   └── personality-setup-guide.md
+└── scripts/                     # Setup utilities (MAX 2 files)
+    └── setup-checklist.md
+```
+
+### ❌ FORBIDDEN
+- Nested folders beyond 2 levels deep
+- More than 20 files in root directory
+- More than 3 files in templates/ folder
+- More than 2 files in scripts/ folder
+- Temporary or draft files
+- Duplicate content across files
+- Client-specific implementations
+
+## 📝 Content Rules
+
+### Documentation Standards
+- All content must be generic and reusable
+- No client-specific names, brands, or implementations
+- Focus on Bird.com AI Employees configuration
+- Use clear, concise language
+- Maintain consistent formatting
+
+### File Naming Convention
+- Use numbered prefixes for main documentation (01-, 02-, etc.)
+- Use descriptive names for templates and scripts
+- Avoid abbreviations unless universally understood
+- Use hyphens for multi-word filenames
+
+### Content Organization
+- Each file should have a single, clear purpose
+- Avoid cross-references that create circular dependencies
+- Keep related information together
+- Use consistent section headers across files
+
+## 🔧 Development Rules
+
+### Code & Configuration
+- NO automated configuration files (JSON, YAML, etc.)
+- Focus on manual configuration guides
+- Document step-by-step processes
+- Include screenshots and examples where helpful
+
+### Templates & Scripts
+- Templates must be reusable across different businesses
+- Scripts should be simple and focused
+- Avoid complex automation
+- Prioritize clarity over cleverness
+
+### Version Control
+- Commit messages should be descriptive
+- One logical change per commit
+- Keep commits focused and atomic
+- Update README.md when adding new files
+
+## 🚫 Anti-Patterns to Avoid
+
+### File Organization
+- Don't create folders for every topic
+- Don't split single concepts across multiple files
+- Don't create temporary or experimental files
+- Don't duplicate information across files
+
+### Content Creation
+- Don't write client-specific documentation
+- Don't create overly complex templates
+- Don't include sensitive information
+- Don't write implementation-specific code
+
+### Structure Violations
+- Don't exceed the defined file limits
+- Don't create deep folder hierarchies
+- Don't mix different types of content in one file
+- Don't create files without clear purpose
+
+## ✅ Quality Standards
+
+### Documentation Quality
+- Clear, actionable instructions
+- Consistent formatting and style
+- Proper grammar and spelling
+- Logical flow and organization
+
+### Template Quality
+- Reusable across different use cases
+- Clear placeholders and examples
+- Consistent structure
+- Minimal customization required
+
+### Script Quality
+- Simple and focused functionality
+- Clear error handling
+- Well-documented steps
+- Easy to understand and modify
+
+## 🎯 Success Criteria
+
+A successful contribution to this repository should:
+1. Follow the KISS methodology
+2. Maintain the compact file structure
+3. Be generic and reusable
+4. Focus on Bird.com AI Employees
+5. Add clear value without complexity
+6. Follow established patterns and conventions
+
+## 📋 Review Checklist
+
+Before committing any changes, verify:
+- [ ] File structure follows KISS methodology
+- [ ] Content is generic and reusable
+- [ ] No client-specific implementations
+- [ ] Clear, actionable documentation
+- [ ] Consistent formatting and style
+- [ ] Proper file naming conventions
+- [ ] No duplicate or redundant content
+- [ ] README.md is updated if needed
+
+---
+
+**Remember**: This repository is for Bird.com AI Employees documentation only. Keep it simple, focused, and organized. 

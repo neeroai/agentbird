@@ -1,191 +1,210 @@
-# 🤖 Bird.com AI Employees - Guía Completa de Configuración
+# 🤖 AgentBird - Bird.com AI + BMad Method Integration
 
-## ⚠️ IMPORTANTE: Configuración Manual Únicamente
+## ⚠️ IMPORTANT: Dual-Purpose Repository
 
-**Bird.com NO soporta configuración mediante JSON, YAML o APIs automatizadas**. Toda la configuración de AI Employees debe realizarse manualmente a través de la interfaz web de Bird.com. Esta documentación proporciona guías paso-a-paso para la configuración manual.
+**AgentBird** combines Bird.com AI Employee documentation with the optimized BMad-Method agent system for Claude Code. The repository has been streamlined to eliminate 90% of duplicate content while preserving full functionality.
 
-## 📋 Índice de Contenidos
+## 📋 Repository Structure (Optimized)
 
-Esta documentación contiene todo el conocimiento necesario para configurar, implementar y gestionar AI Employees en Bird.com mediante configuración manual a través de la interfaz web de la plataforma.
+### 🎯 Bird.com AI Employees (Manual Configuration)
+**Bird.com does NOT support JSON/YAML APIs** - all configuration is manual through web interface.
 
-### 📚 Documentación Principal
+### 🧠 BMad-Method Agent System (Claude Code Optimized)
+**Location**: `.claude/agents/` - 10 specialized agents with hyper-detailed descriptions
+- **Universal Agent**: `/bmad-master` - Can execute any BMad task
+- **Development Team**: `/dev`, `/qa`, `/architect`, `/po`, `/sm` 
+- **Planning Team**: `/pm`, `/analyst`, `/ux-expert`
+- **Custom Tools**: 6 Python tools for resource access and workflow execution
 
-1. **[01-INTRODUCCION.md](01-INTRODUCCION.md)** - Introducción a Bird.com AI
-   - ¿Qué es Bird.com?
-   - Capacidades de AI Employees
-   - Casos de uso empresariales
-   - Arquitectura general
+### 📚 Bird.com Documentation
 
-2. **[02-ARQUITECTURA.md](02-ARQUITECTURA.md)** - Arquitectura e Integración
-   - Componentes del sistema
-   - Flujo de datos
-   - Integración con APIs externas
-   - Arquitectura de microservicios
+1. **[01-INTRODUCCION.md](01-INTRODUCCION.md)** - Introduction to Bird.com AI
+2. **[02-ARQUITECTURA.md](02-ARQUITECTURA.md)** - Architecture & Integration
+   - System components
+   - Data flow
+   - External API integration
+   - Microservices architecture
 
-3. **[03-CONFIGURACION-BASICA.md](03-CONFIGURACION-BASICA.md)** - Configuración Básica
-   - Prerequisitos
-   - Creación de cuenta
-   - Configuración inicial del workspace
-   - Primer AI Agent
+3. **[03-CONFIGURACION-BASICA.md](03-CONFIGURACION-BASICA.md)** - Basic Configuration
+   - Prerequisites
+   - Account creation
+   - Initial workspace setup
+   - First AI Agent
 
-4. **[04-CONFIGURACION-AVANZADA.md](04-CONFIGURACION-AVANZADA.md)** - Configuración Avanzada
-   - Configuración de modelos AI
-   - Personalización profunda
-   - Integraciones complejas
-   - Optimización de rendimiento
+4. **[04-CONFIGURACION-AVANZADA.md](04-CONFIGURACION-AVANZADA.md)** - Advanced Configuration
+   - AI model configuration
+   - Deep customization
+   - Complex integrations
+   - Performance optimization
 
-5. **[05-PERSONALIDAD-Y-COMPORTAMIENTO.md](05-PERSONALIDAD-Y-COMPORTAMIENTO.md)** - Personalidad y Comportamiento
-   - Definición de personalidad
+5. **[05-PERSONALIDAD-Y-COMPORTAMIENTO.md](05-PERSONALIDAD-Y-COMPORTAMIENTO.md)** - Personality & Behavior
+   - Personality definition
    - Tone of voice
-   - Guardrails y restricciones
-   - Comportamientos específicos
+   - Guardrails and restrictions
+   - Specific behaviors
 
 6. **[06-KNOWLEDGE-BASE.md](06-KNOWLEDGE-BASE.md)** - Knowledge Base
-   - Estructura del conocimiento
-   - Formato de documentos
-   - Sincronización automática
-   - Mejores prácticas
+    - Single file structure
+    - Content organization
+    - Embedding search setup
+    - Best practices
 
-7. **[07-AI-ACTIONS.md](07-AI-ACTIONS.md)** - AI Actions y API Integration
-   - Configuración de acciones
-   - Webhooks y endpoints
+7. **[07-AI-ACTIONS.md](07-AI-ACTIONS.md)** - AI Actions & API Integration
+   - Action configuration
+   - Webhooks and endpoints
    - Request/Response templates
-   - Manejo de errores
+   - Error handling
 
-8. **[08-FLUJO-CONVERSACIONAL.md](08-FLUJO-CONVERSACIONAL.md)** - Flujo Conversacional
-   - Diseño de conversaciones
-   - Embudo de ventas de 9 pasos
-   - Manejo de contexto
-   - Escalamiento a humanos
+8. **[08-FLUJO-CONVERSACIONAL.md](08-FLUJO-CONVERSACIONAL.md)** - Conversational Flow
+   - Conversation design
+   - Sales funnel
+   - Context handling
+   - Human escalation
 
-9. **[09-INTEGRACIONES-API.md](09-INTEGRACIONES-API.md)** - Integraciones API
-   - KOAJ Catalog API
-   - Endpoints especializados
-   - Autenticación y seguridad
+9. **[09-INTEGRACIONES-API.md](09-INTEGRACIONES-API.md)** - API Integrations
+   - External APIs
+   - Specialized endpoints
+   - Authentication and security
    - Rate limiting
 
-10. **[10-WEBHOOKS-Y-EVENTOS.md](10-WEBHOOKS-Y-EVENTOS.md)** - Webhooks y Eventos
-    - Configuración de webhooks
-    - Tipos de eventos
-    - Procesamiento bidireccional
-    - Analytics en tiempo real
+10. **[10-WEBHOOKS-Y-EVENTOS.md](10-WEBHOOKS-Y-EVENTOS.md)** - Webhooks & Events
+    - Webhook configuration
+    - Event types
+    - Bidirectional processing
+    - Real-time analytics
 
-11. **[11-TESTING-Y-VALIDACION.md](11-TESTING-Y-VALIDACION.md)** - Testing y Validación
-    - Estrategias de testing
-    - Casos de prueba
-    - Validación de respuestas
-    - Métricas de calidad
+11. **[11-TESTING-Y-VALIDACION.md](11-TESTING-Y-VALIDACION.md)** - Testing & Validation
+    - Testing strategies
+    - Test cases
+    - Response validation
+    - Quality metrics
 
-12. **[12-MONITOREO-Y-ANALYTICS.md](12-MONITOREO-Y-ANALYTICS.md)** - Monitoreo y Analytics
-    - KPIs principales
+12. **[12-MONITOREO-Y-ANALYTICS.md](12-MONITOREO-Y-ANALYTICS.md)** - Monitoring & Analytics
+    - Main KPIs
     - Dashboards
-    - Alertas automáticas
-    - Optimización continua
+    - Automatic alerts
+    - Continuous optimization
 
-13. **[13-SEGURIDAD-Y-COMPLIANCE.md](13-SEGURIDAD-Y-COMPLIANCE.md)** - Seguridad y Compliance
-    - Protección de datos
-    - Cumplimiento normativo
-    - Auditoría
-    - Mejores prácticas de seguridad
+13. **[13-SEGURIDAD-Y-COMPLIANCE.md](13-SEGURIDAD-Y-COMPLIANCE.md)** - Security & Compliance
+    - Data protection
+    - Regulatory compliance
+    - Auditing
+    - Security best practices
 
 14. **[14-TROUBLESHOOTING.md](14-TROUBLESHOOTING.md)** - Troubleshooting
-    - Problemas comunes
-    - Soluciones rápidas
-    - Debugging avanzado
-    - Soporte técnico
+    - Common problems
+    - Quick solutions
+    - Advanced debugging
+    - Technical support
 
-15. **[15-CASOS-DE-USO.md](15-CASOS-DE-USO.md)** - Casos de Uso
-    - E-commerce (KOAJ)
-    - Atención al cliente
-    - Ventas B2B
-    - Ejemplos reales
-
-### 📁 Recursos Adicionales
+### 📁 Additional Resources
 
 #### 📄 Templates (`/templates`)
-- **[custom-instructions.md](templates/custom-instructions.md)** - Plantillas de instrucciones personalizadas
-- **[manual-config-guide.md](templates/manual-config-guide.md)** - Guía paso-a-paso para configuración manual
-- **[personality-setup-guide.md](templates/personality-setup-guide.md)** - Guía de configuración de personalidad
-- **[test-scenarios.md](templates/test-scenarios.md)** - Escenarios de prueba
+- **[manual-config-guide.md](templates/manual-config-guide.md)** - Step-by-step manual configuration guide
+- **[personality-setup-guide.md](templates/personality-setup-guide.md)** - Personality configuration guide
 
 #### 🔧 Scripts (`/scripts`)
-- **[setup-checklist.md](scripts/setup-checklist.md)** - Checklist de configuración paso a paso
-- **[validation-tests.md](scripts/validation-tests.md)** - Scripts de validación automática
+- **[setup-checklist.md](scripts/setup-checklist.md)** - Step-by-step configuration checklist
 
 ---
 
 ## 🚀 Quick Start
 
-### Para Configurar un AI Employee Básico:
+### For Bird.com AI Employee Configuration:
+1. Read [01-INTRODUCCION.md](01-INTRODUCCION.md) to understand concepts
+2. Follow [03-CONFIGURACION-BASICA.md](03-CONFIGURACION-BASICA.md) for initial setup
+3. Use [templates/manual-config-guide.md](templates/manual-config-guide.md) for customization
+4. Validate with [11-TESTING-Y-VALIDACION.md](11-TESTING-Y-VALIDACION.md)
 
-1. Lee [01-INTRODUCCION.md](01-INTRODUCCION.md) para entender los conceptos
-2. Sigue [03-CONFIGURACION-BASICA.md](03-CONFIGURACION-BASICA.md) para la configuración inicial
-3. Usa [templates/custom-instructions.md](templates/custom-instructions.md) para personalizar
-4. Valida con [11-TESTING-Y-VALIDACION.md](11-TESTING-Y-VALIDACION.md)
+### For BMad Agent System (Claude Code):
+```bash
+# Validate agent setup
+python3 .claude/validate_agents.py
 
-### Para el Caso Específico de KOAJ (Jako):
+# Start with universal agent
+/bmad-master
+*help
 
-1. Revisa [15-CASOS-DE-USO.md](15-CASOS-DE-USO.md) para el caso de e-commerce
-2. Implementa el flujo de [08-FLUJO-CONVERSACIONAL.md](08-FLUJO-CONVERSACIONAL.md)
-3. Configura las integraciones según [09-INTEGRACIONES-API.md](09-INTEGRACIONES-API.md)
-4. Usa los templates específicos en `/templates`
-
----
-
-## 📊 Estado Actual de la Implementación KOAJ
-
-### ✅ Completado
-- AI Agent "Jako" configurado y operacional
-- Integración con KOAJ Catalog API
-- Knowledge Base con políticas y FAQs
-- Flujo conversacional de 9 pasos
-- Webhooks bidireccionales
-- Testing inicial completado
-
-### 🔄 En Proceso
-- Optimización de imágenes (1,000+ migradas)
-- Expansión del knowledge base
-- Mejora de recomendaciones AI
-- Analytics avanzados
-
-### 📅 Próximos Pasos
-- Integración con sistema de inventario en tiempo real
-- Personalización por historial de usuario
-- A/B testing de conversaciones
-- Expansión a otros canales (Instagram, Facebook)
+# Development workflow
+/pm          # Create PRD
+/architect   # Design system  
+/po          # Shard documents
+/sm          # Create stories
+/dev         # Implement features
+/qa          # Quality review
+```
 
 ---
 
-## 🛠️ Herramientas y Recursos
+## 📊 Optimized Project Structure
 
-### APIs Principales
-- **KOAJ Catalog API**: `https://api.neero.link/v1`
+```
+agentbird/
+├── README.md                    # Main documentation index (Bird.com + BMad)
+├── CLAUDE.md                    # Claude Code project configuration
+├── 01-14 Bird.com docs/         # Spanish Bird.com setup guides
+├── templates/                   # Bird.com configuration templates (3 files max)
+├── .claude/                     # Claude Code BMad Agent System (OPTIMIZED)
+│   ├── agents/                  # 10 specialized agents (90% deduplication)
+│   ├── tools/                   # 6 Python tools for resource access
+│   ├── tools.json              # Tool definitions
+│   └── README.md               # Agent system documentation
+├── .bmad-core/                  # Consolidated BMad Resources (SINGLE SOURCE)
+│   ├── templates/              # 12 YAML document templates  
+│   ├── tasks/                  # 17 executable workflows
+│   ├── checklists/             # 6 validation checklists
+│   ├── data/                   # Knowledge base & methodology
+│   └── workflows/              # Complete project workflows
+├── knowledge-base/             # Bird.com knowledge documentation
+├── web/                        # Web interface components
+├── 06-KNOWLEDGE-BASE.md        # Knowledge base management
+├── 07-AI-ACTIONS.md            # Actions & API integration
+├── 08-FLUJO-CONVERSACIONAL.md  # Conversational design
+├── 09-INTEGRACIONES-API.md     # External API integration
+├── 10-WEBHOOKS-Y-EVENTOS.md    # Webhooks & events
+├── 11-TESTING-Y-VALIDACION.md  # Testing & validation
+├── 12-MONITOREO-Y-ANALYTICS.md # Monitoring & analytics
+├── 13-SEGURIDAD-Y-COMPLIANCE.md # Security & compliance
+├── 14-TROUBLESHOOTING.md       # Problem solving
+├── templates/                   # Reusable templates (MAX 3 files)
+│   ├── manual-config-guide.md
+│   └── personality-setup-guide.md
+└── scripts/                     # Setup utilities (MAX 2 files)
+    └── setup-checklist.md
+```
+
+---
+
+## 🛠️ Tools & Resources
+
+### Main APIs
 - **Bird.com API**: `https://api.bird.com/v1`
+- **OpenAI API**: `https://api.openai.com/v1`
 
-### Endpoints Especializados
-- `/bird/ai-search` - Búsqueda optimizada para AI
-- `/bird/recommendations/smart` - Recomendaciones inteligentes
-- `/bird/knowledge-base/{category}` - Acceso a knowledge base
-- `/bird/events/webhook` - Eventos bidireccionales
+### Specialized Endpoints
+- `/bird/ai-employees` - AI Employees management
+- `/bird/knowledge-base` - Knowledge base access
+- `/bird/actions` - AI Actions configuration
+- `/bird/webhooks` - Event handling
 
-### Contacto y Soporte
-- **Documentación técnica**: Esta carpeta `/agentbird`
-- **API Support**: servicioalcliente@permoda.com.co
+### Support & Contact
+- **Technical documentation**: This folder `/agentbird`
 - **Bird.com Support**: support@bird.com
+- **OpenAI Support**: support.openai.com
 
 ---
 
-## 📝 Notas Importantes
+## 📝 Important Notes
 
-1. **Configuración Manual**: Toda configuración debe realizarse a través de la interfaz web de Bird.com
-2. **No Automatización**: Bird.com no permite configuración vía JSON, YAML o APIs
-3. **Seguridad**: Configurar permisos y guardrails directamente en la interfaz web
-4. **Compliance**: Cumplir con regulaciones de protección de datos mediante configuración manual
-5. **Testing**: Probar funcionalidad directamente en la plataforma Bird.com
-6. **Monitoreo**: Usar dashboard nativo de Bird.com para métricas y alertas
+1. **Manual Configuration**: All configuration must be done through Bird.com web interface
+2. **No Automation**: Bird.com doesn't allow configuration via JSON, YAML or APIs
+3. **Security**: Configure permissions and guardrails directly in web interface
+4. **Compliance**: Comply with data protection regulations through manual configuration
+5. **Testing**: Test functionality directly on Bird.com platform
+6. **Monitoring**: Use native Bird.com dashboard for metrics and alerts
 
 ---
 
-**Última actualización**: 2025-07-29  
-**Versión**: 1.0.0  
-**Mantenido por**: Equipo de AI - KOAJ
+**Last updated**: 2025-01-27  
+**Version**: 2.0.0  
+**Maintained by**: AI Team
