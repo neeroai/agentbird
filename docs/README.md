@@ -44,6 +44,15 @@ Comprehensive AWS infrastructure design, including networking, security, and ope
 - Event-driven architecture patterns
 - Disaster recovery and backup strategies
 
+### ✨ [Advanced Features](./03-advanced-features/)
+Advanced functionality and specialized features to enhance the WhatsApp AI experience.
+
+**Key Topics:**
+- [WhatsApp Typing Simulation](./03-advanced-features/whatsapp-typing-simulation.md) - Create human-like conversation experiences with realistic typing delays
+- Enhanced user engagement techniques
+- Advanced conversation flow management
+- Performance optimization strategies
+
 ## Quick Start
 
 ### Prerequisites
@@ -73,6 +82,11 @@ Comprehensive AWS infrastructure design, including networking, security, and ope
    - Performance optimization
    - Security hardening
    - Disaster recovery testing
+   
+5. **Advanced Features Phase** (Optional)
+   - Implement typing simulation for human-like interactions
+   - Add advanced conversation management features
+   - Deploy specialized engagement optimization
 
 ### Key Architecture Benefits
 

@@ -1,0 +1,241 @@
+flowchart TD
+    subgraph Notes1["📋 UrbanHub Properties (8 Locations)"]
+        direction TB
+        note1["🏢 Josefa (Reforma) | Matilde (Roma) | Polanco | Condesa<br>
+        🏢 Nápoles | Juárez | Del Valle | Doctores<br>
+        📍 All properties: Pet-friendly, No guarantor, 24/7 security<br>
+        💰 Range: $15,400 - $28,400 MXN/month + services<br>
+        🔧 Integrated with ValueKeep CMMS for 100% automation"]
+    end
+    
+    subgraph Notes2["📝 Essential Data Capture Requirements"]
+        direction TB
+        note2["🔍 Required Information:<br>
+        1 - Building (8 UrbanHub locations)<br>
+        2 - Unit number (APT-XXX format)<br>
+        3 - Problem description + photos<br>
+        4 - Urgency level (AI keyword detection)<br>
+        5 - Access instructions (pets, schedule)<br>
+        6 - Preferred time slots (avoid PM conflicts)"]
+    end
+
+    subgraph ValueKeep["🔧 ValueKeep CMMS Integration Architecture"]
+        direction TB
+        VK1["🔐 OAuth2 Authentication<br>Client Credentials Flow<br>Auto-refresh 5min before expiry"]
+        VK2["📊 Core API Endpoints<br>POST /maintenance.workorders<br>GET /womanagements<br>GET /preventivemaintenancesevents<br>PATCH /workorders/{id}"]
+        VK3["🔔 Bidirectional Webhooks<br>WorkOrderStateChanged<br>TechnicianAssigned<br>WorkOrderCompleted<br>PreventiveMaintenanceReminder"]
+        VK4["📋 Synchronized Catalogs<br>Priorities: URGENTE|ALTO|NORMAL|BAJA<br>States: S01-S09 workflow<br>Activities: Category-specific codes<br>Assets: 8 properties mapping"]
+        VK1 --> VK2 --> VK3 --> VK4
+    end
+
+    subgraph BirdAI["🤖 Bird.com Multi-Agent Architecture"]
+        direction TB
+        BA1["🚦 Orchestrator Agent (Maya)<br>Intent Detection & Smart Routing<br><20 seconds response time"]
+        BA2["🔧 Maintenance Agent (Carlos)<br>ValueKeep Integration Specialist<br>582 lines configuration"]
+        BA3["⚙️ Actions Configuration<br>CreateMaintenanceTicket<br>AutoAssignTechnician<br>CheckTicketStatus<br>SendProgressUpdates"]
+        BA4["🛡️ Guardrails System<br>10 Must Do behaviors<br>10 Must Not Do restrictions<br>8 Escalation triggers"]
+        BA1 --> BA2 --> BA3 --> BA4
+    end
+
+    subgraph Integration["🔌 Integration Components"]
+        direction TB
+        INT1["🌐 API Client (api-client.js)<br>OAuth2 + Rate limiting (60/min)<br>Retry logic with exponential backoff"]
+        INT2["🎫 Ticket Manager (ticket-manager.js)<br>Orchestration + Smart assignment<br>Calendar conflict resolution"]
+        INT3["🔔 Webhook Handler (webhook-handler.js)<br>HMAC-SHA256 validation<br>Real-time state updates"]
+        INT4["🗺️ State Mapper (state-mapper.js)<br>ValueKeep ↔ Bird transformations<br>Priority + Category mapping"]
+        INT5["🚨 Error Handler (error-handler.js)<br>Monitoring + Alerts + Fallbacks<br>Slack notifications"]
+        INT1 --> INT2 --> INT3 --> INT4 --> INT5
+    end
+
+    A["🚀 Start: Resident Reports Issue"] --> B["📱 WhatsApp Message to UrbanHub"]
+    B --> BA1
+    BA1 --> C{"🎯 Intent Classification<br>AI-powered in <20 seconds"}
+    C -->|🔧 Maintenance Request| BA2
+    C -->|💼 Leasing Query| CS1["Lead Qualification Agent"]
+    C -->|📅 Tour Request| CS2["Tour Management Agent"]
+    C -->|❓ General Query| CS3["Customer Service Agent"]
+    
+    BA2 --> D["📋 Comprehensive Data Collection"]
+    D --> E["🏢 Building Identification<br>Validate against 8 properties"]
+    E --> F["🚪 Unit Number Validation<br>Format: APT-XXX"]  
+    F --> G["📝 Problem Description Analysis<br>AI categorization + keyword detection"]
+    G --> H["📸 Media Attachments Processing<br>Photos/videos for technician"]
+    H --> I["🕐 Schedule Preferences Capture<br>Resident availability windows"]
+    I --> J["🐕 Access Instructions<br>Pets, security, special notes"]
+    
+    J --> K["🤖 AI Classification Engine"]
+    K --> L["📊 Category Assignment<br>PLOMERIA | ELECTRICIDAD | HVAC<br>CARPINTERIA | ELECTRODOMESTICOS<br>CERRAJERIA | PINTURA | LIMPIEZA"]
+    L --> M["🚨 Priority Calculation Algorithm<br>Keywords analysis + Category mapping<br>Timeline requirements assessment"]
+    
+    M --> N{"⚡ Urgency Decision Point"}
+    N -->|🚨 URGENTE| O["🚨 Emergency Fast Track<br>Override preventive maintenance<br>Immediate technician assignment"]
+    N -->|📅 NORMAL/ALTA/BAJA| P["📅 Preventive Maintenance Validation<br>Check PM calendar conflicts"]
+    
+    P --> Q{"🔍 PM Conflict Detection<br>Query /preventivemaintenancesevents"}
+    Q -->|⚠️ Conflict Found| R["📅 Smart Rescheduling<br>Propose alternative slots<br>Minimize resident impact"]
+    Q -->|✅ No Conflict| S["✅ Time Slot Validated"]
+    R --> S
+    O --> S
+    
+    S --> INT2
+    INT2 --> T["🔧 ValueKeep API Integration<br>POST /maintenance.workorders<br>OAuth2 authenticated request"]
+    T --> U{"✅ API Response Analysis"}
+    U -->|201 Created| V["🎫 Work Order Created<br>Store: WO-YYYY-XXXXXX<br>Status: S01 (New)"]
+    U -->|4xx/5xx Error| W["🔄 Intelligent Error Handling<br>Retry logic: 3 attempts<br>Exponential backoff strategy"]
+    W -->|Max Retries Exceeded| X["🚨 Human Escalation<br>Operations team notification<br>Manual ticket creation fallback"]
+    W -->|Retry Successful| V
+    
+    V --> Y["👥 Intelligent Technician Assignment"]
+    Y --> Z["📊 Technician Availability Query<br>/maintenance.womanagements<br>Filter: location + specialty + date"]
+    Z --> AA["🎯 Multi-Criteria Selection Algorithm<br>Score Calculation:<br>• Specialty match: +30 points<br>• Same building: +20 points<br>• Available in preferred time: +25 points<br>• Workload factor: -10 per active ticket"]
+    AA --> BB["🏆 Optimal Technician Selected<br>Highest scored available tech"]
+    BB --> CC["📅 Calendar Coordination<br>Schedule appointment in VK<br>Block technician time"]
+    
+    CC --> DD["✅ Assignment Completed<br>PATCH /workorders/{id}<br>Update: assignedTechnician"]
+    DD --> EE["📨 Resident Notification<br>Confirmation message with:<br>• Ticket number<br>• Technician name & contact<br>• Scheduled time<br>• Estimated duration"]
+    EE --> FF["🔔 ValueKeep State Transition<br>S01 (New) → S09 (Assigned)<br>Webhook notification triggered"]
+    
+    FF --> GG["🚛 Technician Dispatch<br>Field work execution"]
+    GG --> HH["🔔 Real-time Progress Updates<br>S09 → S02 (In Progress)<br>Webhook: 'Técnico en camino'"]
+    HH --> II["✅ Work Completion by Technician<br>S02 → S03 (Completed)<br>Document resolution in VK"]
+    
+    II --> JJ["🔔 Completion Webhook Processing<br>Auto-notification via Bird<br>'Trabajo completado, confirma por favor'"]
+    JJ --> KK{"❓ Resident Satisfaction Check<br>Problem fully resolved?"}
+    KK -->|✅ Confirmed Resolved| LL["✅ Ticket Final Closure<br>S03 → S04 (Closed)<br>Archive in ValueKeep"]
+    KK -->|❌ Issue Persists| MM["🔄 Follow-up Protocol Activation"]
+    
+    MM --> NN["⬆️ Automatic Priority Escalation<br>Upgrade to URGENTE priority<br>Flag as recurring issue"]
+    NN --> OO["👥 Different Technician Assignment<br>Avoid same tech for quality<br>Select specialist or supervisor"]
+    OO --> PP["🆕 Follow-up Work Order Creation<br>Link to original: parent_ticket<br>Enhanced problem description"]
+    PP --> CC
+    
+    LL --> QQ["📊 Post-Resolution Activities<br>CSAT survey (1-5 scale)<br>Service quality feedback"]
+    QQ --> RR["📈 Analytics & Metrics Update<br>Performance tracking<br>SLA compliance monitoring<br>Technician performance"]
+    RR --> SS["🎯 Complete Lifecycle End<br>Resident satisfied<br>Data archived<br>Metrics updated"]
+
+    subgraph ErrorHandling["🚨 Error Handling & Recovery System"]
+        direction TB
+        EH1["🔄 Retry Logic Framework<br>Exponential backoff strategy<br>3 attempts with 1s, 2s, 4s delays"]
+        EH2["📊 Rate Limiting Compliance<br>60 requests/minute (production)<br>100 requests/minute (sandbox)<br>Queue management for peaks"]
+        EH3["🚨 Monitoring & Alert System<br>Slack notifications (#maintenance-dev)<br>Email alerts (operations@urbanhub.mx)<br>SMS for critical failures"]
+        EH4["📋 Fallback Mechanisms<br>Manual mode activation<br>Queue for retry<br>Cached responses<br>Human escalation"]
+        EH5["📝 Comprehensive Logging<br>Winston logger integration<br>Error tracking & metrics<br>Audit trail maintenance"]
+        EH1 --> EH2 --> EH3 --> EH4 --> EH5
+    end
+
+    subgraph StateFlow["📊 ValueKeep State Management System"]
+        direction LR
+        S01["S01: New<br>🆕 Created in system<br>SLA timer starts"]
+        S09["S09: Assigned<br>👨‍🔧 Technician allocated<br>Calendar appointment set"]
+        S02["S02: In Progress<br>🔧 Active work session<br>Real-time updates"]
+        S08["S08: QA Review<br>🔍 Quality assurance<br>Supervisor validation"]
+        S03["S03: Completed<br>✅ Work finished<br>Awaiting confirmation"]
+        S04["S04: Closed<br>🏁 Final closure<br>Archived status"]
+        S05["S05: Canceled<br>❌ Terminated<br>Reopen option available"]
+        
+        S01 --> S09
+        S09 --> S02
+        S02 --> S03
+        S02 --> S08
+        S08 --> S03
+        S08 --> S02
+        S03 --> S04
+        S01 --> S05
+        S02 --> S05
+        S03 --> S05
+        S04 --> S01
+        S05 --> S01
+    end
+
+    subgraph TechAssignment["👥 Intelligent Technician Assignment System"]
+        direction TB
+        TA1["🔍 Availability Query<br>GET /maintenance.womanagements<br>Parameters: date, location, specialty"]
+        TA2["📊 Multi-Criteria Scoring Algorithm<br>• Specialty match: +30 points<br>• Same building location: +20 points<br>• Available in preferred time: +25 points<br>• Lower workload: +10 per task difference<br>• Customer history bonus: +15 points"]
+        TA3["📅 Calendar Validation<br>Check schedule conflicts<br>Validate appointment slots<br>Ensure PM event avoidance"]
+        TA4["✅ Optimal Assignment Execution<br>Update work order in ValueKeep<br>Create calendar appointment<br>Notify technician via app"]
+        TA5["🔄 Assignment Backup Plan<br>If no tech available:<br>1. Escalate to operations manager<br>2. Queue for next available<br>3. Emergency contractor if urgent"]
+        TA1 --> TA2 --> TA3 --> TA4 --> TA5
+    end
+
+    subgraph PMConflicts["📅 Preventive Maintenance Integration"]
+        direction TB
+        PM1["🔍 PM Event Query<br>GET /preventivemaintenancesevents<br>Check 7-day window ahead"]
+        PM2["⚡ Conflict Detection Logic<br>Compare requested time slots<br>Identify scheduling overlaps"]
+        PM3["📅 Smart Rescheduling<br>Propose alternative times<br>Minimize resident inconvenience<br>Maintain SLA compliance"]
+        PM4["🚨 Emergency Override<br>URGENTE tickets can bump PM<br>Automatic PM rescheduling<br>Stakeholder notifications"]
+        PM1 --> PM2 --> PM3 --> PM4
+    end
+
+    %% Enhanced connections
+    W --> ErrorHandling
+    T --> StateFlow
+    AA --> TechAssignment
+    VK3 --> StateFlow
+    P --> PMConflicts
+    VK2 --> PMConflicts
+
+    %% Enhanced styling
+    note1:::notes
+    note2:::notes
+    A:::startEnd
+    B:::process
+    C:::decision
+    D:::process
+    E:::process
+    F:::process
+    G:::process
+    H:::process
+    I:::process
+    J:::process
+    K:::process
+    L:::process
+    M:::process
+    N:::decision
+    O:::urgent
+    P:::process
+    Q:::decision
+    R:::process
+    S:::process
+    T:::api
+    U:::decision
+    V:::success
+    W:::error
+    X:::escalation
+    Y:::process
+    Z:::api
+    AA:::algorithm
+    BB:::success
+    CC:::process
+    DD:::success
+    EE:::notification
+    FF:::webhook
+    GG:::process
+    HH:::webhook
+    II:::process
+    JJ:::webhook
+    KK:::decision
+    LL:::success
+    MM:::process
+    NN:::escalation
+    OO:::process
+    PP:::api
+    QQ:::process
+    RR:::process
+    SS:::startEnd
+    CS1:::agent
+    CS2:::agent
+    CS3:::agent
+
+    classDef startEnd fill:#90EE90,stroke:#2E8B57,stroke-width:3px
+    classDef process fill:#ADD8E6,stroke:#4682B4,stroke-width:2px
+    classDef decision fill:#FFB6C1,stroke:#DC143C,stroke-width:2px
+    classDef api fill:#F0E68C,stroke:#DAA520,stroke-width:2px
+    classDef urgent fill:#FF6B6B,stroke:#DC143C,stroke-width:3px
+    classDef success fill:#98FB98,stroke:#228B22,stroke-width:2px
+    classDef error fill:#FFA07A,stroke:#CD5C5C,stroke-width:2px
+    classDef escalation fill:#DDA0DD,stroke:#9370DB,stroke-width:2px
+    classDef notification fill:#87CEEB,stroke:#4169E1,stroke-width:2px
+    classDef webhook fill:#F0E68C,stroke:#FF8C00,stroke-width:2px
+    classDef algorithm fill:#DEB887,stroke:#A0522D,stroke-width:2px
+    classDef agent fill:#E6E6FA,stroke:#8A2BE2,stroke-width:2px
+    classDef notes fill:#FFFACD,stroke:#DDD,stroke-width:1px

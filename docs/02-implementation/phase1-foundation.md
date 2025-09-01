@@ -583,6 +583,7 @@ class AIProcessingService:
             self._store_conversation(user_id, message_text, ai_response, message_event)
             
             # Send response to WhatsApp
+            # Note: For advanced typing simulation, see docs/03-advanced-features/whatsapp-typing-simulation.md
             self._send_whatsapp_message(user_id, ai_response)
             
             return {
@@ -653,6 +654,7 @@ class AIProcessingService:
             ai_response = response_body['completion'].strip()
             
             # Validate response length for WhatsApp
+            # Note: Message chunking strategies available in advanced features documentation
             if len(ai_response) > 4096:
                 ai_response = ai_response[:4093] + "..."
             
@@ -728,7 +730,11 @@ class AIProcessingService:
             logger.error(f"Error updating cache: {str(e)}")
 
     def _send_whatsapp_message(self, to_user, message):
-        """Send message to WhatsApp user"""
+        """Send message to WhatsApp user
+        
+        Note: This is a basic implementation. For human-like typing simulation,
+        see the advanced typing features in docs/03-advanced-features/whatsapp-typing-simulation.md
+        """
         try:
             url = f"https://graph.facebook.com/v17.0/{os.environ['WHATSAPP_PHONE_NUMBER_ID']}/messages"
             

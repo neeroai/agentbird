@@ -1,5 +1,7 @@
 # Phase 2: Intelligence & Media Processing
 
+> **💡 Tip**: Para funcionalidades avanzadas de simulación de typing y experiencias de conversación más humanas, consulta [WhatsApp Typing Simulation](../03-advanced-features/whatsapp-typing-simulation.md)
+
 ## 🎯 Phase Overview
 
 La Fase 2 expande las capacidades del sistema agregando inteligencia avanzada, procesamiento multimedia y características empresariales. El objetivo es evolucionar de un chatbot básico a un asistente de IA sofisticado capaz de manejar múltiples tipos de contenido y proveer respuestas contextualmente ricas.
@@ -635,7 +637,9 @@ class EnhancedAIProcessingService:
                 language, sentiment, intent, should_escalate, message_event
             )
             
-            # Send response
+            # Send response (with optional typing simulation)
+            # For human-like conversation flow, consider enabling typing simulation
+            # See: docs/03-advanced-features/whatsapp-typing-simulation.md
             self._send_whatsapp_message(user_id, ai_response)
             
             return {
